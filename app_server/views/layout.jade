@@ -1,13 +1,32 @@
+//common framework
 doctype html
 html
-  head
-    //set viewport metadata for better display on mobile devices
-    meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    title= title
-    //include themed bootstrap css
-    link(rel='stylesheet', href='/bootstrap/css/amelia.bootstrap.css')
-    link(rel='stylesheet', href='/stylesheet/style.css')
-  body
-    block content
-    script(src='/javascript/jquery-3.2.1.min.js')
-    script(src='/bootstrap/js/bootstrap.min.js')
+    head
+        //set viewport metadata for better display on mobile devices
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        title= title
+        //include themed bootstrap css
+        link(rel='stylesheet', href='/bootstrap/css/amelia.bootstrap.css')
+        link(rel='stylesheet', href='/stylesheets/style.css')
+    body
+        .navbar.navbar-default.navbar-fixed-top
+            .container
+                .navbar-header
+                    a.navbar-brand(href='/') Loc8r
+                    button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-main')
+                        span.icon-bar
+                        span.icon-bar
+                        span.icon-bar
+                #navbar-main.navbar-collapse.collapse
+                    ul.nav.navbar-nav
+                        li
+                            a(href='/about/') About
+        .container
+          block content
+
+          footer
+            .row
+                .col-xs-12
+                    small &copy; Simon Holmes 2014
+        script(src='/javascripts/jquery-3.2.1.min.js')
+        script(src='/bootstrap/js/bootstrap.min.js')
