@@ -76,7 +76,6 @@ module.exports.locationsListByDistance = function (req,res) {
 
 var buildLocationList = function (req, res, results, stats) {
   var locations = [];
-  console.log(results);
   results.forEach(function (doc) {
     locations.push(
       {
