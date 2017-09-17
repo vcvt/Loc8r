@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var gracefunShutdown;
+var gracefulShutdown;
 //create connection to mongedb
 var dbURI = 'mongodb://localhost/Loc8r';
 if (process.env.NODE_ENV === 'production') {
@@ -12,7 +12,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 mongoose.connect(dbURI, {'useMongoClient': true});
 
-gracefunShutdown = function (msg, callback) {
+gracefulShutdown = function (msg, callback) {
   mongoose.connection.close(function () {
     console.log('Mongoose disconnected through ' + msg);
   });
@@ -21,7 +21,7 @@ gracefunShutdown = function (msg, callback) {
 /*to monitor when tha application stops we need to listen to the node.js process,
 listening for an event called SIGINT*/
 process.on('SIGINT', function () {
-  gracefunShutdown('app termination', function () {
+  gracefulShutdown('app termination', function () {
     process.exit(0);
   })
 });
@@ -36,4 +36,5 @@ mongoose.connection.on('disconnected', function () {
   console.log('Mongoose disconnected');
 });
 
+//bring in your schemas & models
 require('./locations');
