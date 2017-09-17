@@ -1,0 +1,2 @@
+1.mongod.exe --config D:\mongodb\conf\mongodb.config --install --serviceName "mongodb"
+2.net start mongodb
