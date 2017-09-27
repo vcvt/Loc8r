@@ -36,7 +36,6 @@ module.exports.locationsListByDistance = function (req,res) {
 
   var geoOptions = {
     spherical : true,
-    // maxDistance: theEarth.getRadsFromDistance(maxDistance),
     maxDistance: theEarth().getRadsFromDistance(maxDistance),
     num : 10
   };
@@ -45,17 +44,6 @@ module.exports.locationsListByDistance = function (req,res) {
     sendJsonResponse(res, 404, {"message" : "lng, lat and maxDistance query parameters are all required"});
     return;
   }
-  /*
-    geoNear return format:
-    [{
-    dis: 0.002532674663406363,
-    obj: {
-      name: 'Starcups',
-      address: '125 High Street, Reading, RG6 1PS'
-    }
-    }]
-  */
-
   Loc.geoNear(point, geoOptions, function (err, results, stats) {
     var locations;
     console.log('Geo Results', results);
